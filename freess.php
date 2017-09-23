@@ -1,10 +1,10 @@
 <?php
 require_once("lib/FileSystemCache.php");
 
-// ¶şÎ¬Âë½âÂëurl
+// äºŒç»´ç è§£ç url
 $qring = 'http://qring.org/decode?url=';
 
-// FreeSS µÄ¶şÎ¬Âë½Úµã
+// FreeSS çš„äºŒç»´ç èŠ‚ç‚¹
 $freess_url = array(
     'jp01' => 'https://freess.cx/images/servers/jp01.png',
     'jp02' => 'https://freess.cx/images/servers/jp02.png',
@@ -14,39 +14,39 @@ $freess_url = array(
     'us03' => 'https://freess.cx/images/servers/us03.png',
 );
 
-// ÉèÖÃ»º´æKEY
+// è®¾ç½®ç¼“å­˜KEY
 $cache_key = FileSystemCache::generateCacheKey('subscribe');
 
-// »ñÈ¡»º´æ
+// è·å–ç¼“å­˜
 $subscribe = FileSystemCache::retrieve($cache_key);
 
-if($subscribe === false){// »º´æ²»´æÔÚÔòÖØĞÂ»ñÈ¡½Úµã
+if($subscribe === false){// ç¼“å­˜ä¸å­˜åœ¨åˆ™é‡æ–°è·å–èŠ‚ç‚¹
 	foreach($freess_url as $key=>$url){
-		$jsontext = get_url_content($qring . $url, "http://qring.org");     // Æ´×°url²¢ÓÃ qring.org ½âÂë¶şÎ¬Âë
+		$jsontext = get_url_content($qring . $url, "http://qring.org/d");     // æ‹¼è£…urlå¹¶ç”¨ qring.org è§£ç äºŒç»´ç 
 		$json = json_decode($jsontext, true);
 		if($json && $json['errCode'] == 0){
 			$freess[$key] = $json['data']['text'];
-			$subscribe .= $freess[$key] . '#FreeSS - ' . $key . chr(10); // Æ´½Ó³É¶©ÔÄµÄÔ­Ê¼Êı¾İ¸ñÊ½ ÎÄµµ£º https://github.com/ssrbackup/shadowsocks-rss/wiki/Subscribe-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A2%E9%98%85%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3
+			$subscribe .= $freess[$key] . '#FreeSS - ' . $key . chr(10); // æ‹¼æ¥æˆè®¢é˜…çš„åŸå§‹æ•°æ®æ ¼å¼ æ–‡æ¡£ï¼š https://github.com/ssrbackup/shadowsocks-rss/wiki/Subscribe-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A2%E9%98%85%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3
 		}
 	}
-    $subscribe = substr($subscribe, 0, -1); // ×îºóÒ»ÌõÉ¾³ı»»ĞĞ·û
-	FileSystemCache::store($cache_key, $subscribe, 1800);   // »º´æÊı¾İ(ÓĞĞ§ÆÚ°ëĞ¡Ê±)
+    $subscribe = substr($subscribe, 0, -1); // æœ€åä¸€æ¡åˆ é™¤æ¢è¡Œç¬¦
+	FileSystemCache::store($cache_key, $subscribe, 1800);   // ç¼“å­˜æ•°æ®(æœ‰æ•ˆæœŸåŠå°æ—¶)
 }
 
 
 if(!empty($subscribe)){
-	echo base64_encode($subscribe);     // Êä³ö¶©ÔÄµÄÊı¾İ
+	echo base64_encode($subscribe);     // è¾“å‡ºè®¢é˜…çš„æ•°æ®
 }
 
 /*
-* ×¥È¡Ò³ÃæÄÚÈİ
+* æŠ“å–é¡µé¢å†…å®¹
 */
 function get_url_content($url, $referer="") {
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
     $ch = curl_init();
     $timeout = 5;
     $urlarr     = parse_url($url);
-    if($urlarr["scheme"] == "https") {	//ÅĞ¶ÏURLÊÇ·ñÎªhttpsÀàĞÍ
+    if($urlarr["scheme"] == "https") {	//åˆ¤æ–­URLæ˜¯å¦ä¸ºhttpsç±»å‹
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     }
