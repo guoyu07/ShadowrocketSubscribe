@@ -7,18 +7,9 @@ Shadowrocket Subscribe Demo
 
 ## 服务端部署
 
-1. 在 PHP7 的 WEB 环境中安装 [DolphinPHP](http://www.dolphinphp.com/) 系统
+1. 在 PHP7 的 WEB 环境中安装 [DolphinPHP](http://www.dolphinphp.com/) 系统 (用 `DolphinPHP` 是因为我习惯用这系统来做东西，比较方便)
 2. 通过 `Composer` 安装组件 `composer require jaeger/querylist`
-3. 用户本项目的 `application` 覆盖 DolphinPHP 的 `application` 目录
-
-```
-<?php
-
-return [
-    // GFW.Press
-    'subscribe/gpress/:email/:password$' => ['subscribe/gpress/index', ['method' => 'get', 'ext' => '']],
-];
-```
+3. 用本项目的 `application` 覆盖 DolphinPHP 的 `application` 目录
 
 ## Shadowrocket 客户端配置
 
