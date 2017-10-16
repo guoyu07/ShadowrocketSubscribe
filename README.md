@@ -3,7 +3,7 @@ Shadowrocket Subscribe Demo
 
 ## 简介
 
-此项目是一个简单的 `Shadowrocket` 的订阅服务端演示程序，通过抓取 [GFW.Press](https://gfw.press) 提供的免费节点来演示 `Shadowrocket` 的 `Subscribe` 功能
+此项目是一个简单的 `Shadowrocket` 的订阅服务端演示程序，通过抓取 [GFW.Press](https://gfw.press) 提供的免费节点来演示 `Shadowrocket` 的 `Subscribe` 功能 (由于目标网站 GFW.Press 被墙，所以你必须部署在墙外的服务器上才行)
 
 ## 服务端部署
 
