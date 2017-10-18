@@ -22,3 +22,9 @@ Shadowrocket Subscribe Demo
 回到 `Shadowrocket` 首页，找到刚才添加的订阅服务，左划一下，点击 `更新` 按钮即可获取到最新 GFW.Press 节点配置
 
 如有需要，可以再配置一下 `Subscribe` 的更新策略，`设置 - 服务器订阅` 把 `打开时更新` 打开
+
+## Workflow
+
+[GFW.Press节点获取](https://workflow.is/workflows/d686433cc2a94315b9b791582d207656)
+
+额外分享一个 GFW.Press 节点获取的 Workflow
